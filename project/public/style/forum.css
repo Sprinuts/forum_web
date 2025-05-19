@@ -1,0 +1,15 @@
+body { font-family: Arial, sans-serif; }
+        .forum-row {
+            border: 1px solid #ccc;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        .username {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .message {
+            margin-top: 5px;
+        }
