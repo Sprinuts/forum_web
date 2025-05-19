@@ -23,7 +23,8 @@ class Index extends BaseController
 
             $registerdata = $this->request->getPost([
                 'username',
-                'message'
+                'message',
+                'subject'
             ]);
 
             $forummodel->insert($registerdata);

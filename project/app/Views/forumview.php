@@ -3,8 +3,9 @@
 <a href="<?= base_url('/'); ?>" class="btn btn-sm btn-danger">Back</a>
 
 <div class="forum-row">
-    <div class="username"><h3><?= $forum['username']?></h3></div>
-    <div class="message"><h2><?= $forum['message']?></h2></div>
+    <div class="username"><h4><?= $forum['username']?></h4></div>
+    <div class="subject"><h2><?= $forum['subject']?></h2></div>
+    <div class="message"><h><?= $forum['message']?></h4></div>
     <a href="<?= base_url('forumview/forumreply/'.$forum['id']); ?>" class="btn btn-sm btn-primary">reply</a>
 </div>
 

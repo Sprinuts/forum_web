@@ -10,8 +10,8 @@
     <?php
     foreach ($forums as $forum): ?>
         <div class="forum-row">
-            <div class="username"><?= $forum['username']?></div>
-            <div class="message"><?= $forum['message']?></div>
+            <div class="username"><h4><?= $forum['username']?></h4></div>
+            <div class="subject"><h2><?= $forum['subject']?></h2></div>
             <a href="<?= base_url('forumview/'.$forum['id']); ?>" class="btn btn-sm btn-success">View</a>
         </div>
     <?php endforeach; ?>

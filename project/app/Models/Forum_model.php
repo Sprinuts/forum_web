@@ -14,7 +14,8 @@ class Forum_model extends Model{
     protected $allowedFields = [
         'id',
         'username',
-        'message'
+        'message',
+        'subject'
     ];
 
 
