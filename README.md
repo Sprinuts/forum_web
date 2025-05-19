@@ -8,6 +8,7 @@ A simple web-based forum application.
 
 - View Forums
 - Create Forum
+- Admin
 
 ## Getting Started
 
