@@ -48,6 +48,9 @@ class Admin extends BaseController
         $forumsmodel = model('Forum_model');
         $forumsmodel->delete($id);
 
+        $replyModel = model('Reply_model');
+        $replyModel->where('forumid', $id)->delete();
+
         return redirect()->to('adminforum')->with('success', 'Forum deleted successfully!');
     }
 }
