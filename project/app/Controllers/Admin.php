@@ -6,6 +6,10 @@ class Admin extends BaseController
 {
     public function login()
     {
+        if(session()->has('isLogged')){
+                return redirect()->to('adminforum');
+            }
+
         helper('form');
 
         if($this->request->getMethod() === 'POST') {
@@ -23,6 +27,10 @@ class Admin extends BaseController
             if(!$user){
                 session()->setFlashdata('error', 'Username and/or password in invalid.');
             } else{
+                session()->set('isLogged', true);
+
+
+
                 return redirect()->to('adminforum');
             }
         }
@@ -34,17 +42,26 @@ class Admin extends BaseController
 
     public function forum()
     {
+        if(!session()->has('isLogged')){
+            return redirect()->to('adminlogin');
+        }
+
         $forumsmodel = model('Forum_model');
         $data['forums'] = $forumsmodel->paginate(10);
         $data['pager'] = $forumsmodel->pager;
 
         return view('include/header')
+            .view('include/adminnavbar')
             .view('adminforum', $data)
             .view('include/footer');
     }
 
     public function delete($id)
     {
+        if(!session()->has('isLogged')){
+            return redirect()->to('adminlogin');
+        }
+
         $forumsmodel = model('Forum_model');
         $forumsmodel->delete($id);
 
@@ -56,6 +73,10 @@ class Admin extends BaseController
 
     public function replydelete($id)
     {
+        if(!session()->has('isLogged')){
+            return redirect()->to('adminlogin');
+        }
+
         $replyModel = model('Reply_model');
         $replyModel->delete($id);
 
@@ -67,6 +88,10 @@ class Admin extends BaseController
 
     public function forumview($id)
     {
+        if(!session()->has('isLogged')){
+            return redirect()->to('adminlogin');
+        }
+
         $forumsmodel = model('Forum_model');
         $data['forum'] = $forumsmodel->find($id);
 
@@ -74,7 +99,14 @@ class Admin extends BaseController
         $data['replys'] = $replysmodel->where('forumid', $id)->findAll();
 
         return view('include/header')
+            .view('include/adminnavbar')
             .view('adminforumview', $data)
             .view('include/footer');
+    }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('adminlogin');
     }
 }

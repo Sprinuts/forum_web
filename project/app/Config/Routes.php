@@ -16,6 +16,7 @@ $routes->post('(?i)create', 'Index::create');
 //admin login
 $routes->get('adminlogin', 'Admin::login');
 $routes->post('adminlogin', 'Admin::login');
+$routes->get('adminlogout', 'Admin::logout');
 
 //admin forum
 $routes->get('adminforum', 'Admin::forum');
