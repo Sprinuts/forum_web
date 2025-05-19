@@ -34,13 +34,20 @@ class Admin extends BaseController
 
     public function forum()
     {
-        $forummodel = model('Forum_model');
-        $data = [
-            'forums' => $forummodel->findAll()
-        ];
+        $forumsmodel = model('Forum_model');
+        $data['forums'] = $forumsmodel->paginate(10);
+        $data['pager'] = $forumsmodel->pager;
 
         return view('include/header')
             .view('adminforum', $data)
             .view('include/footer');
+    }
+
+    public function delete($id)
+    {
+        $forumsmodel = model('Forum_model');
+        $forumsmodel->delete($id);
+
+        return redirect()->to('adminforum')->with('success', 'Forum deleted successfully!');
     }
 }
