@@ -8,6 +8,7 @@ foreach ($forums as $forum): ?>
         <div class="username"><?= $forum['username']?></div>
         <div class="message"><?= $forum['message']?></div>
         <a href="<?= base_url('adminforum/delete/'.$forum['id']); ?>" class="btn btn-sm btn-danger">Delete</a>
+        <a href="<?= base_url('adminforumview/'.$forum['id']); ?>" class="btn btn-sm btn-success">View</a>
     </div>
 <?php endforeach; ?>
 

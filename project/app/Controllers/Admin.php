@@ -53,4 +53,28 @@ class Admin extends BaseController
 
         return redirect()->to('adminforum')->with('success', 'Forum deleted successfully!');
     }
+
+    public function replydelete($id)
+    {
+        $replyModel = model('Reply_model');
+        $replyModel->delete($id);
+
+        $forumsmodel = model('Forum_model');
+        $data['forum'] = $forumsmodel->find($id);
+
+        return redirect()->to('adminforumview/'.$id)->with('success', 'Reply deleted successfully!')->with('data', $data);
+    }
+
+    public function forumview($id)
+    {
+        $forumsmodel = model('Forum_model');
+        $data['forum'] = $forumsmodel->find($id);
+
+        $replysmodel = model('Reply_model');
+        $data['replys'] = $replysmodel->where('forumid', $id)->findAll();
+
+        return view('include/header')
+            .view('adminforumview', $data)
+            .view('include/footer');
+    }
 }
