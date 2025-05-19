@@ -21,7 +21,7 @@ $routes->get('adminlogout', 'Admin::logout');
 //admin forum
 $routes->get('adminforum', 'Admin::forum');
 $routes->get('adminforum/delete/(:num)', 'Admin::delete/$1');
-$routes->get('adminforumview/replydelete/(:num)', 'Admin::replydelete/$1');
+$routes->get('adminforumview/replydelete/(:num)/(:num)', 'Admin::replydelete/$1/$2');
 $routes->get('adminforumview/(:num)', 'Admin::forumview/$1');
 
 

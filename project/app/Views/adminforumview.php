@@ -13,6 +13,6 @@
         <div class="forum-row">
             <div class="username"><?= $reply['username']?></div>
             <div class="message"><?= $reply['message']?></div>
-            <a href="<?= base_url('adminforumview/replydelete/'.$reply['id']); ?>" class="btn btn-sm btn-danger">Delete</a>
+            <a href="<?= base_url('adminforumview/replydelete/'.$reply['id'].'/'.$forum['id']); ?>" class="btn btn-sm btn-danger">Delete</a>
         </div>
     <?php endforeach; ?>

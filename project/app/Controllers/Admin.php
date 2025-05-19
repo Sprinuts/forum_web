@@ -71,7 +71,7 @@ class Admin extends BaseController
         return redirect()->to('adminforum')->with('success', 'Forum deleted successfully!');
     }
 
-    public function replydelete($id)
+    public function replydelete($id,$fid)
     {
         if(!session()->has('isLogged')){
             return redirect()->to('adminlogin');
@@ -81,9 +81,9 @@ class Admin extends BaseController
         $replyModel->delete($id);
 
         $forumsmodel = model('Forum_model');
-        $data['forum'] = $forumsmodel->find($id);
+        $data['forum'] = $forumsmodel->find($fid);
 
-        return redirect()->to('adminforumview/'.$id)->with('success', 'Reply deleted successfully!')->with('data', $data);
+        return redirect()->to('adminforumview/'.$fid)->with('success', 'Reply deleted successfully!')->with('data', $data);
     }
 
     public function forumview($id)
