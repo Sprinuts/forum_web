@@ -109,4 +109,46 @@ class Admin extends BaseController
         session()->destroy();
         return redirect()->to('adminlogin');
     }
+
+    public function updategame()
+    {
+        if(!session()->has('isLogged')){
+            return redirect()->to('adminlogin');
+        }
+
+        if ($this->request->getMethod() === 'POST') {
+            $gamesmodel = model('Game_model');
+
+            $file = $this->request->getFile('gamefile');
+
+            if ($file && $file->isValid() && !$file->hasMoved()) {
+                $gameDir = ROOTPATH . 'public/gamefile';
+                // Remove existing files in the gamefile directory
+                if (is_dir($gameDir)) {
+                    $files = glob($gameDir . '/*');
+                    foreach ($files as $existingFile) {
+                        if (is_file($existingFile)) {
+                            unlink($existingFile);
+                        }
+                    }
+                }
+                $newName = $file->getRandomName();
+                $file->move($gameDir, $newName);
+                $gamePath = 'public/gamefile/' . $newName;
+
+            $gamesmodel->update(1, [
+                'gamepath' => $gamePath
+            ]);
+
+            return redirect()->to('adminforum')->with('success', 'Game updated successfully!');
+            } else {
+            return redirect()->back()->with('error', 'File upload failed.');
+            }
+        }
+
+        return view('include/header')
+            .view('include/adminnavbar')
+            .view('adminupdategame')
+            .view('include/footer');
+    }
 }

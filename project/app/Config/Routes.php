@@ -13,6 +13,9 @@ $routes->get('/', 'Index::index');
 $routes->get('(?i)create', 'Index::create');
 $routes->post('(?i)create', 'Index::create');
 
+//game download
+$routes->get('(?i)downloadgame', 'Index::downloadgame');
+
 //admin login
 $routes->get('adminlogin', 'Admin::login');
 $routes->post('adminlogin', 'Admin::login');
@@ -23,6 +26,8 @@ $routes->get('adminforum', 'Admin::forum');
 $routes->get('adminforum/delete/(:num)', 'Admin::delete/$1');
 $routes->get('adminforumview/replydelete/(:num)/(:num)', 'Admin::replydelete/$1/$2');
 $routes->get('adminforumview/(:num)', 'Admin::forumview/$1');
+$routes->get('adminupdategame', 'Admin::updategame');
+$routes->post('adminupdategame', 'Admin::updategame');
 
 
 //reply and view forum

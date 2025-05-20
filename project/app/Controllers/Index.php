@@ -11,6 +11,7 @@ class Index extends BaseController
         $data['pager'] = $forumsmodel->pager;
 
         return view('include/header')
+            .view('include/navbar')
             .view('index', $data)
             .view('include/footer');
     }
@@ -72,6 +73,18 @@ class Index extends BaseController
 
         return view('include/header')
             .view('forumreply', $data)
+            .view('include/footer');
+    }
+
+    public function downloadgame()
+    {
+        $downloadpath = model(('Game_model'));
+        $game = $downloadpath->first();
+        $data['games'] = $game['gamepath'];
+        echo $data['games'];
+        return view('include/header')
+            .view('include/navbar')
+            .view('downloadgame', $data)
             .view('include/footer');
     }
 }

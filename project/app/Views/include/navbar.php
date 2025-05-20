@@ -15,21 +15,11 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Options
+                        Game
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="<?= base_url(relativePath: 'adminupdategame'); ?>">Update Game</a></li>
+                        <li><a class="dropdown-item" href="<?= base_url(relativePath: 'downloadgame'); ?>">Download Game</a></li>
                     </ul>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                <a class="Btn" href="<?= base_url("adminlogout")?>">
-                    <div class="sign">  
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                    </div>
-                    <div class="text">Logout</div>
-                </a>
                 </li>
             </ul>
         </div>
