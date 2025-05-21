@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2025 at 05:07 PM
+-- Generation Time: May 20, 2025 at 07:19 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -49,16 +49,34 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 CREATE TABLE `forum` (
   `id` int(100) NOT NULL,
   `username` varchar(100) NOT NULL,
-  `message` varchar(100) NOT NULL
+  `message` varchar(100) NOT NULL,
+  `subject` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `forum`
 --
 
-INSERT INTO `forum` (`id`, `username`, `message`) VALUES
-(2, 'yeah', 'damn'),
-(3, 'sprinuts', 'test message 3');
+INSERT INTO `forum` (`id`, `username`, `message`, `subject`) VALUES
+(4, 'sprinuts', 'alright', 'testsubject');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `game`
+--
+
+CREATE TABLE `game` (
+  `id` int(100) NOT NULL,
+  `gamepath` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `game`
+--
+
+INSERT INTO `game` (`id`, `gamepath`) VALUES
+(1, 'public/gamefile/1747761500_c4889f5b4da89d9b26be.png');
 
 -- --------------------------------------------------------
 
@@ -74,14 +92,6 @@ CREATE TABLE `reply` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `reply`
---
-
-INSERT INTO `reply` (`id`, `username`, `message`, `forumid`) VALUES
-(1, 'reply test', 'lets go', 2),
-(2, 'test 2', 'lets go', 2);
-
---
 -- Indexes for dumped tables
 --
 
@@ -95,6 +105,12 @@ ALTER TABLE `admin`
 -- Indexes for table `forum`
 --
 ALTER TABLE `forum`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `game`
+--
+ALTER TABLE `game`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -117,13 +133,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `forum`
 --
 ALTER TABLE `forum`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `game`
+--
+ALTER TABLE `game`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `reply`
 --
 ALTER TABLE `reply`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

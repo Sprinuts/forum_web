@@ -132,9 +132,9 @@ class Admin extends BaseController
                         }
                     }
                 }
-                $newName = $file->getRandomName();
-                $file->move($gameDir, $newName);
-                $gamePath = 'public/gamefile/' . $newName;
+                $filename = $file->getClientName();
+                $file->move($gameDir, $filename);
+                $gamePath = 'public/gamefile/' . $filename;
 
             $gamesmodel->update(1, [
                 'gamepath' => $gamePath
